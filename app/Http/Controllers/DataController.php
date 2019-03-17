@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class DataController
@@ -17,6 +18,8 @@ class DataController extends Controller
      */
     public function echo(Request $request)
     {
+        Log::info('Request: '.$request->getContentType());
+
         if ($request->isJson()) {
             $data = $this->formatData($request);
         } else {
